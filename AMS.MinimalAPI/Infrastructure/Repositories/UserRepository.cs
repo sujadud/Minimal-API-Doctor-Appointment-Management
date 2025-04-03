@@ -11,7 +11,7 @@ namespace AMS.MinimalAPI.Infrastructure.Repositories
 
         public async Task<User?> GetByEmailAsync(string email)
         {
-            return await _appContext.Users.SingleOrDefaultAsync(u => u.Email == email);
+            return await _appContext.Users.AsNoTracking().SingleOrDefaultAsync(u => u.Email == email);
         }
 
         public override async Task<ICollection<User>> GetAllAsync()

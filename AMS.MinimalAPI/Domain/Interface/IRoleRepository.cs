@@ -2,7 +2,6 @@
 using AMS.MinimalAPI.Domain.Interface.Base;
 
 namespace AMS.MinimalAPI.Domain.Interface;
-public interface IUserRepository : IBaseRepository<User>    
+public interface IRoleRepository : IBaseRepository<Role>
 {
-    Task<User?> GetByEmailAsync(string email);
 }

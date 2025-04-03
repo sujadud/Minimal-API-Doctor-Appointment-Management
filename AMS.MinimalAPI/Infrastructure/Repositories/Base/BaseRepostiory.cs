@@ -7,12 +7,11 @@ namespace AMS.MinimalAPI.Infrastructure.Repositories.Base
     public abstract class BaseRepository<T> : IBaseRepository<T> where T : class
     {
         protected readonly AppDbContext _appContext;
-        protected readonly dynamic _saveChanges;
         protected BaseRepository() => _appContext = new AppDbContext();
 
         public virtual async Task<ICollection<T>> GetAllAsync()
         {
-            var getAllAsync = await _appContext.Set<T>().ToListAsync();
+            var getAllAsync = await _appContext.Set<T>().AsNoTracking().ToListAsync();
             return getAllAsync;
         }
 
