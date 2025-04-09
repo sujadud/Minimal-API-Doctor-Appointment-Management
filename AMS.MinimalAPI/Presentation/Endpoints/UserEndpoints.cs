@@ -43,7 +43,7 @@ public static class UserEndpoints
         // Get All Users
         group.MapGet("/", async (ISender sender) =>
         {
-            var users = await sender.Send(new GetAllUsersQuery());
+            var users = await sender.Send(new GetUsersQuery());
             return Results.Ok(users);
         });
     }

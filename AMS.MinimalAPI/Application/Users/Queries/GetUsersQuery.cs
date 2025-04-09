@@ -2,4 +2,4 @@
 using MediatR;
 
 namespace AMS.MinimalAPI.Application.Users.Queries;
-public record GetAllUsersQuery : IRequest<List<UserResponseDto>>;
+public record GetUsersQuery : IRequest<List<UserResponseDto>>;

@@ -16,7 +16,12 @@ namespace AMS.MinimalAPI.Infrastructure.Repositories
 
         public override async Task<ICollection<User>> GetAllAsync()
         {
-            return (ICollection<User>)base.GetAllAsync().Result.Where(x => x.IsDeleted == true || x.IsDeleted == false);
+            return (ICollection<User>)_appContext.Users.Include(r => r.Role).Where(x => x.IsDeleted == true || x.IsDeleted == false);
+        }
+
+        public override Task<User?> GetByIdAsync(Guid id)
+        {
+            return _appContext.Users.Include(r => r.Role).FirstOrDefaultAsync(u => u.Id == id);
         }
 
         public override async Task<bool> DeleteAsync(User entity)
